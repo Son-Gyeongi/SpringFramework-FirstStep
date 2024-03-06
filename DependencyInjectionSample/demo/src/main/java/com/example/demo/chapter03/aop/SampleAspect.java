@@ -43,6 +43,13 @@ public class SampleAspect {
         // 메서드 이름 출력
         System.out.println(String.format("메서드:%s", joinPoint.getSignature().getName()));
     }*/
+
+    /**
+     * 메서드 전 후에 호출할 수 있는 Aruond Advice
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
     @Around("execution(* com.example.demo.chapter03.used.*Greet.*(..))")
     public Object aroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
         // 시작 부분 표시
