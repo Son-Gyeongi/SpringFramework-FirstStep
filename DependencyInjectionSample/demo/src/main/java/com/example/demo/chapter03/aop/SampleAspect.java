@@ -45,7 +45,7 @@ public class SampleAspect {
     }*/
 
     /**
-     * 메서드 전 후에 호출할 수 있는 Aruond Advice
+     * 메서드 전 후에 호출할 수 있는 Around Advice
      * @param joinPoint
      * @return
      * @throws Throwable
