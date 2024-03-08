@@ -1,11 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.form.CalcForm;
+import com.example.demo.validator.CalcValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -48,5 +52,19 @@ public class ValidationController {
 
         // 확인 화면으로
         return "confirm";
+    }
+
+    /**
+     * 주입(인젝션)
+     */
+    @Autowired
+    CalcValidator calcValidator;
+
+    /**
+     * 커스텀 유효성 검사기 등록
+     */
+    @InitBinder("calcForm")
+    public void intiBinder(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(calcValidator);
     }
 }
